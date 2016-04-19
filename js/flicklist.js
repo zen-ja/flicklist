@@ -2,7 +2,10 @@
 
 var model = {
   watchlistItems: [],
-  browseItems: []
+  browseItems: [],
+  // TODO
+  // add a new field, browseActiveIndex, initially set to 0
+
 }
 
 
@@ -13,6 +16,7 @@ var api = {
 }
 
 
+
 /**
  * Makes an AJAX request to the /discover endpoint of the API, using the 
  * keyword ID that was passed in
@@ -21,7 +25,6 @@ var api = {
  * the callback function that was passed in
  */
 function discoverMovies(data, callback) {
-  // DONE 
   $.ajax({
     url: api.root + "/discover/movie",
     data: data,
@@ -67,7 +70,6 @@ function searchMovies(query, callback) {
  * the API's response.
  */
 function fetchKeywords(query, cbSuccess, cbError) {
-  // DONE
   $.ajax({
     url: api.root + "/search/keyword",
     data: {
@@ -85,11 +87,13 @@ function fetchKeywords(query, cbSuccess, cbError) {
  */
 function render() {
   var watchlistElement = $("#section-watchlist ul");
-  var browseElement = $("#section-browse ul");
+  var carouselInner = $("#section-browse .carousel-inner");
+  var browseInfo = $("#browse-info");
 
   // clear everything
   watchlistElement.empty();
-  browseElement.empty();
+  carouselInner.empty();
+  browseInfo.empty();
 
   // insert watchlist items
   model.watchlistItems.forEach(function(movie) {
@@ -101,8 +105,8 @@ function render() {
       .append(title);
 
     // panel body
-    var poster = $("<img></img>");
-    poster.attr("src", posterUrl(movie, "w300"));
+    var poster = $("<img></img>")
+      .attr("src", posterUrl(movie, "w300"));
     var panelBody = $("<div></div>")
       .attr("class", "panel-body")
       .append(poster)
@@ -114,10 +118,7 @@ function render() {
       .append(panelHeading)
       .append(panelBody);
 
-    // DONE
-    // create a button that is overlayed on top of the item view.
-    // The button should say "I watched it", and when clicked,
-    // removes this movie from the watchlist and re-renders.
+
     var button = $("<button></button>")
       .text("I watched it")
       .attr("class", "btn")
@@ -126,11 +127,6 @@ function render() {
         render();
       })
       .hide();
-
-    // DONE
-    // the button should be hidden by default
-    // when the mouse is hovered over the itemView, the button should appear
-    // and when the mouse leaves again, the button should disappear again
 
     var itemView = $("<li></li>")
       .append(panel)
@@ -146,27 +142,32 @@ function render() {
   });
 
   // insert browse items
-  model.browseItems.forEach(function(movie) {
-    var title = $("<h4></h4>").text(movie.original_title);
-    var overview = $("<p></p>").text(movie.overview);
 
-    var button = $("<button></button>")
-      .text("Add to Watchlist")
-      .attr("class", "btn btn-primary")
-      .click(function() {
-        model.watchlistItems.push(movie);
-        render();
-      })
-      .prop("disabled", model.watchlistItems.indexOf(movie) !== -1);
+  model.browseItems.forEach(function(movie, index) {
+    // TODO
+    // Implement the carousel:
+    // create an image for this the movie's poster
+    // wrap the image inside a div item
+    // append the item into the carousel-inner element
 
-    var itemView = $("<li></li>")
-      .attr("class", "list-group-item")
-      .append(title)
-      .append(overview)
-      .append(button);
 
-    browseElement.append(itemView);
+    // TODO
+    // notice how our forEach function now takes a second `index` argument
+    // if this index is equal to the current active index,
+    // give this item a class attribute of "active"
+    if (index === model.browseActiveIndex) {
+      carouselItem.attr("class", "item active");
+    }
+
   });
+
+  // TODO
+  // display info for the currently active movie
+  
+  
+  // TODO
+  // disable or enable the Add to Watchlist button depending on
+  // whether the current active movie is already on the user's watchlist
   
 }
 
@@ -180,8 +181,13 @@ function posterUrl(movie, width) {
  * removes the given movie from model.watchlistItems
  */
 function removeFromWatchlist(movie) {
-  // DONE
   model.watchlistItems = model.watchlistItems.filter(function(item) {
     return item !== movie;
   });
+}
+
+
+function addActiveMovie() {
+  // TODO
+
 }

@@ -1,9 +1,18 @@
 /*
-DONE
+TODO
 
-Give all buttons inside the watchlist
+Make the browse box red with white text, and no border
 
+make buttons take up all the width of their container
+
+add some margin in between the carousel and the "Add to Watchlist" button
+
+give the carousel a max width of 300px, and center it horizontally in its container
+
+clean up anything no longer in use
 */
+
+
 
 
 .jumbotron {
@@ -14,8 +23,6 @@ Give all buttons inside the watchlist
 #section-watchlist {
 	color: gray;
 }
-
-/*--------------*/
 
 #section-watchlist li {
 	display: inline-block;
@@ -44,8 +51,6 @@ Give all buttons inside the watchlist
 	margin: 0px;
 }
 
-/*-----------------------*/
-
 ul {
 	padding: 0;
 }
@@ -69,4 +74,8 @@ section, .jumbotron, .list-group-item {
 
 .list-group-item {
 	color: gray;
+}
+
+footer {
+	margin-top: 60px;
 }

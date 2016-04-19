@@ -7,6 +7,12 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+  <!-- 
+  TODO
+  include Bootstrap javascript file
+  -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="css/styles.css"/>
 
   <title>FlickList</title>
@@ -28,16 +34,12 @@
   </section>
 
   <section id="section-browse">
-    <header>
-      <h2>Browse Movies</h2>
-    </header>
-
-    <!-- 
-      DONE 
-      Use Bootstrap's grid system to place the form next to the browse list
-    -->
     <div class="row">
 
+      <!-- 
+      TODO 
+      Build out movie info with Bootstrap carousel
+      -->
       <div class="col-sm-4">
         <form id="form-search">
           <div class="form-group">
@@ -56,6 +58,8 @@
     </div>
   </section>
 
+  <hr class="featurette-divider"/>
+
   <footer class="container">
     <p>
       2016 LaunchCode | 
@@ -69,15 +73,20 @@
       $("#form-search").submit(function(evt) {
         evt.preventDefault();
         var query = $("#form-search input[name=query]").val();
-        // DONE
-        // discoverMovies now takes an additional argument before the callback
-        // pass in the query string before render
         searchMovies(query, render);
       });
 
-      // DONE
-      // discoverMovies now takes an additional argument before the callback
-      // pass in an empty string (initially we don't have any keyword to search for)
+      // TODO
+      // add event handler to the "Add to Watchlist" button
+      // which adds the currently active movie to watchlist and re-renders
+      
+
+      // TODO
+      // add event handler for when the carousel has slid
+      // which updates the model's browseActiveIndex and re-renders
+      
+
+      // initial fetch
       searchMovies("", render);
     });
   </script>
