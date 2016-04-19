@@ -20,24 +20,42 @@ var api = {
  * if successful, updates model.browseItems appropriately and then invokes
  * the callback function that was passed in
  */
-function discoverMovies(keywordID, callback) { 
-  // TODO
-  // this function now accepts a keywordID argument
-  // attach this keywordID to the AJAX request
-  // (hint: put it inside the `data` object)
+function discoverMovies(data, callback) {
+  // DONE 
   $.ajax({
     url: api.root + "/discover/movie",
-    data: {
-      api_key: api.token,
-    },
+    data: data,
     success: function(response) {
       model.browseItems = response.results;
       callback(response);
     },
     fail: function() {
-      console.log("search failed");
+      console.log("discover failed");
     }
   });
+}
+
+
+function searchMovies(query, callback) {
+  fetchKeywords(
+    query, 
+    function(keywordsResponse) {
+      console.log("fetch succeeded");
+      var firstKeywordID = keywordsResponse.results[0].id
+      var data = {
+        api_key: api.token,
+        with_keywords: firstKeywordID
+      };
+      discoverMovies(data, callback);
+    },
+    function() {
+      console.log("fetchkeywords failed")
+      var data = {
+        api_key: api.token
+      };
+      discoverMovies(data, callback);
+    }
+  );
 }
 
 
@@ -48,9 +66,17 @@ function discoverMovies(keywordID, callback) {
  * if successful, invokes the supplied callback function, passing in
  * the API's response.
  */
-function fetchKeywords(query, callback) {
-  // TODO
-  
+function fetchKeywords(query, cbSuccess, cbError) {
+  // DONE
+  $.ajax({
+    url: api.root + "/search/keyword",
+    data: {
+      api_key: api.token,
+      query: query
+    },
+    success: cbSuccess,
+    error: cbError
+  });
 }
 
 
@@ -76,7 +102,7 @@ function render() {
 
     // panel body
     var poster = $("<img></img>");
-      .attr("src", posterUrl(movie, "w300"));
+    poster.attr("src", posterUrl(movie, "w300"));
     var panelBody = $("<div></div>")
       .attr("class", "panel-body")
       .append(poster)
@@ -88,7 +114,10 @@ function render() {
       .append(panelHeading)
       .append(panelBody);
 
-
+    // DONE
+    // create a button that is overlayed on top of the item view.
+    // The button should say "I watched it", and when clicked,
+    // removes this movie from the watchlist and re-renders.
     var button = $("<button></button>")
       .text("I watched it")
       .attr("class", "btn")
@@ -97,7 +126,12 @@ function render() {
         render();
       })
       .hide();
-      
+
+    // DONE
+    // the button should be hidden by default
+    // when the mouse is hovered over the itemView, the button should appear
+    // and when the mouse leaves again, the button should disappear again
+
     var itemView = $("<li></li>")
       .append(panel)
       .append(button)
@@ -125,8 +159,6 @@ function render() {
       })
       .prop("disabled", model.watchlistItems.indexOf(movie) !== -1);
 
-    // DONE
-    // use Bootstrap to improve the style of these list items
     var itemView = $("<li></li>")
       .attr("class", "list-group-item")
       .append(title)

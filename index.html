@@ -33,20 +33,27 @@
     </header>
 
     <!-- 
-      TODO 
+      DONE 
       Use Bootstrap's grid system to place the form next to the browse list
     -->
-    <form id="form-search">
-      <div class="form-group">
-        <input type="text" name="query" class="form-control"/>
-      </div>
-      <div clas="form-group">
-        <input type="submit" value="Search By Title" class="btn btn-primary"/>
-      </div>
-    </form>
+    <div class="row">
 
-    <ul class="list-group"></ul>
+      <div class="col-sm-4">
+        <form id="form-search">
+          <div class="form-group">
+            <input type="text" name="query" class="form-control"/>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Search By Keyword" class="btn btn-primary"/>
+          </div>
+        </form>
+      </div>
 
+      <div class="col-sm-8"/>
+        <ul class="list-group"></ul>
+      </div>
+
+    </div>
   </section>
 
   <footer class="container">
@@ -62,18 +69,16 @@
       $("#form-search").submit(function(evt) {
         evt.preventDefault();
         var query = $("#form-search input[name=query]").val();
-        
-        // TODO
-        // use the query to fetch keyword ID from the API
-        // then, pass the keyword ID to discoverMovies()
-        
+        // DONE
+        // discoverMovies now takes an additional argument before the callback
+        // pass in the query string before render
+        searchMovies(query, render);
       });
 
-      // TODO
+      // DONE
       // discoverMovies now takes an additional argument before the callback
-      // so pass in an empty string before render
-      // (an empty string because initially we don't have any keyword to search for)
-      discoverMovies(render);
+      // pass in an empty string (initially we don't have any keyword to search for)
+      searchMovies("", render);
     });
   </script>
 
