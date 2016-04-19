@@ -4,11 +4,22 @@
   <meta charset="utf-8"/>
 
   <script src="https://code.jquery.com/jquery-2.2.3.js"></script>  
+
+  <!-- TODO add link to bootstrap stylesheet -->
+
   <link rel="stylesheet" href="css/styles.css"/>
 
   <title>FlickList</title>
 </head>
 <body>
+
+  <!-- 
+  TODO 
+  Use Bootstrap to make this puppy shine!
+
+  Add various bootstrap classes to your elements on this page
+  You will sometimes need to wrap an element inside a container
+  -->
 
   <header id="big-header">
     <h1>FlickList</h1>
@@ -30,10 +41,8 @@
       <hr/>
     </header>
 
-    <!-- DONE add a <form> here for users to search for movies by title -->
     <form id="form-search">
       <input type="text" name="query"/>
-      <br/>
       <input type="submit" value="Search By Title"/>
     </form>
 
@@ -50,17 +59,13 @@
   <script src="js/flicklist.js"></script>
   <script>
     $(document).ready(function() {
-      // DONE
-      // add a submit handler for the form above
-      // should cause a fetch and re-render
+        
       $("#form-search").submit(function(evt) {
         evt.preventDefault();
         var query = $("#form-search input[name=query]").val();
         searchMovies(query, render);
       });
 
-      // even though we are adding the search form, we still want to fetch
-      // immediately here on doc ready so that the user sees some content initially
       discoverMovies(render);
     });
   </script>

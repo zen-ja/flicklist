@@ -8,7 +8,9 @@ var model = {
 
 var api = {
   root: "https://api.themoviedb.org/3",
-  token: "8e888fa39ec243e662e1fb738c42ae99"
+  token: "8e888fa39ec243e662e1fb738c42ae99",
+  // TODO
+  imageBaseUrl: "TODO"
 }
 
 
@@ -42,7 +44,7 @@ function discoverMovies(callback) {
  * the callback function that was passed in
  */
 function searchMovies(query, callback) {
-  // DONE
+  // TODO
 
   $.ajax({
     url: api.root + "/search/movie",
@@ -74,7 +76,13 @@ function render() {
 
   // insert watchlist items
   model.watchlistItems.forEach(function(movie) {
-    var title = $("<h5></h5>").text(movie.original_title);
+    // TODO
+    // create a bootstrap panel for each watchlist item.
+    // The movie title should go in the panel heading.
+    // The panel body should contain a poster image,
+    // and also a button to cross the item off the watchlist.
+
+    var title = $("<h4></h4>").text(movie.original_title);
     var itemView = $("<li></li>").append(title);
     watchlistElement.append(itemView);
   });
@@ -82,6 +90,7 @@ function render() {
   // insert browse items
   model.browseItems.forEach(function(movie) {
     var title = $("<h4></h4>").text(movie.original_title);
+    var overview = $("<p></p>").text(movie.overview);
     var button = $("<button></button>")
       .text("Add to Watchlist")
       .click(function() {
@@ -89,17 +98,9 @@ function render() {
         render();
       })
       .prop("disabled", model.watchlistItems.indexOf(movie) !== -1);
-      // DONE (see line above)
-      // the button should be disabled if this movie is already in
-      // the user's watchlist
-      // see jQuery .prop() and Array.indexOf()
 
-
-    // DONE
-    // create a paragraph containing the movie object's .overview value
-    // then append the paragraph in between the title and the button
-    var overview = $("<p></p>").text(movie.overview);
-
+    // TODO
+    // use Bootstrap to improve the style of these list items
     var itemView = $("<li></li>")
       .append(title)
       .append(overview)
@@ -112,4 +113,7 @@ function render() {
 
 
 
-
+function posterUrl(movie, width) {
+  // TODO
+  
+}
