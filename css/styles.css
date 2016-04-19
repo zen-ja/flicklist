@@ -1,19 +1,24 @@
 /*
-TODO
+DONE
 
 Make the browse box red with white text, and no border
 
 make buttons take up all the width of their container
 
-add some margin in between the carousel and the "Add to Watchlist" button
-
-give the carousel a max width of 300px, and center it horizontally in its container
+add some margin in between the carousel an the "Add to Watchlist" button
 
 clean up anything no longer in use
 */
 
+.well {
+	background: red;
+	color: white;
+	border-width: 0px;
+}
 
-
+.btn {
+	width: 100%;
+}
 
 .jumbotron {
 	background: gray;
@@ -22,6 +27,7 @@ clean up anything no longer in use
 
 #section-watchlist {
 	color: gray;
+	min-height: 300px;
 }
 
 #section-watchlist li {
@@ -51,12 +57,19 @@ clean up anything no longer in use
 	margin: 0px;
 }
 
-ul {
-	padding: 0;
+.carousel {
+	max-width: 300px;
+	margin: 0 auto;
+	margin-bottom: 10px;
 }
 
 img {
 	width: 100%;
+	border-radius: 4px;
+}
+
+ul {
+	padding: 0px;
 }
 
 #section-browse {
@@ -68,14 +81,14 @@ header {
 	color: gray;
 }
 
-section, .jumbotron, .list-group-item {
+section, .jumbotron {
 	padding: 20px;
 }
 
-.list-group-item {
-	color: gray;
+.featurette-divider {
+	margin: 60px;	
 }
 
 footer {
-	margin-top: 60px;
+	text-align: center;
 }

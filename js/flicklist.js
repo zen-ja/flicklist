@@ -3,9 +3,9 @@
 var model = {
   watchlistItems: [],
   browseItems: [],
-  // TODO
+  // DONE
   // add a new field, browseActiveIndex, initially set to 0
-
+  browseActiveIndex: 0
 }
 
 
@@ -25,6 +25,7 @@ var api = {
  * the callback function that was passed in
  */
 function discoverMovies(data, callback) {
+  // DONE 
   $.ajax({
     url: api.root + "/discover/movie",
     data: data,
@@ -70,6 +71,7 @@ function searchMovies(query, callback) {
  * the API's response.
  */
 function fetchKeywords(query, cbSuccess, cbError) {
+  // DONE
   $.ajax({
     url: api.root + "/search/keyword",
     data: {
@@ -142,18 +144,23 @@ function render() {
   });
 
   // insert browse items
-
   model.browseItems.forEach(function(movie, index) {
-    // TODO
-    // Implement the carousel:
-    // create an image for this the movie's poster
-    // wrap the image inside a div item
+    // DONE
+    // replace the old ul code with new carousel implementation:
+    // create an image with the movie poster
+    // wrap the image inside a div
     // append the item into the carousel-inner element
 
+    var poster = $("<img></img>")
+      .attr("src", posterUrl(movie, "w300"));
+    var carouselItem = $("<div></div>")
+      .attr("class", "item")
+      .append(poster);
+    
+    carouselInner.append(carouselItem);
 
-    // TODO
-    // notice how our forEach function now takes a second `index` argument
-    // if this index is equal to the current active index,
+    // DONE
+    // if this index is the current active index,
     // give this item a class attribute of "active"
     if (index === model.browseActiveIndex) {
       carouselItem.attr("class", "item active");
@@ -161,14 +168,20 @@ function render() {
 
   });
 
-  // TODO
-  // display info for the currently active movie
+  // DONE display info for the currently active movie
+  var activeMovie = model.browseItems[model.browseActiveIndex];
+  var title = $("<h3></h3>").text(activeMovie.original_title);
+  var overview = $("<p></p>").text(activeMovie.overview);
+  browseInfo
+    .append(title)
+    .append($("<hr/>"))
+    .append(overview);
   
-  
-  // TODO
+  // DONE
   // disable or enable the Add to Watchlist button depending on
   // whether the current active movie is already on the user's watchlist
-  
+  var alreadyOnWatchlist = model.watchlistItems.indexOf(activeMovie) !== -1
+  $("#add-to-watchlist").prop("disabled", alreadyOnWatchlist);
 }
 
 
@@ -181,13 +194,14 @@ function posterUrl(movie, width) {
  * removes the given movie from model.watchlistItems
  */
 function removeFromWatchlist(movie) {
+  // DONE
   model.watchlistItems = model.watchlistItems.filter(function(item) {
     return item !== movie;
   });
 }
 
-
 function addActiveMovie() {
-  // TODO
-
+  // DONE
+  var activeMovie = model.browseItems[model.browseActiveIndex];
+  model.watchlistItems.push(activeMovie);
 }

@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
   <!-- 
-  TODO
-  include Bootstrap javascript file
+  DONE
+  include Bootstrap JS file
   -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
@@ -37,10 +37,47 @@
     <div class="row">
 
       <!-- 
-      TODO 
+      DONE 
       Build out movie info with Bootstrap carousel
       -->
+      <div class="col-sm-8"/>
+        <div class="well">
+          <div class="row">
+
+            <div class="col-sm-7" id="browse-info"></div> 
+
+            <div class="col-sm-5">
+              <div class="carousel slide" id="browse-carousel"/>
+
+                <div class="carousel-inner" role="listbox"></div>
+
+                <a class="left carousel-control" href="#browse-carousel" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#browse-carousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+
+              </div>
+              <button class="btn btn-primary" id="add-to-watchlist"/>
+                Add to Watchlist
+              </button>
+            </div> 
+          </div>
+        </div>
+        <ul class="list-group"></ul>
+      </div>
+
+      <!--
+      DONE
+      move the form to the right of the movie info and carousel
+      -->
       <div class="col-sm-4">
+        
+        <header>
+          <h3>Browse Movies</h3>
+        </header>
+
         <form id="form-search">
           <div class="form-group">
             <input type="text" name="query" class="form-control"/>
@@ -51,14 +88,8 @@
         </form>
       </div>
 
-      <div class="col-sm-8"/>
-        <ul class="list-group"></ul>
-      </div>
-
     </div>
   </section>
-
-  <hr class="featurette-divider"/>
 
   <footer class="container">
     <p>
@@ -76,15 +107,22 @@
         searchMovies(query, render);
       });
 
-      // TODO
+      // DONE
       // add event handler to the "Add to Watchlist" button
-      // which adds the currently active movie to watchlist and re-renders
-      
+      $("#add-to-watchlist").click(function() {
+        addActiveMovie();
+        render();
+      });
 
-      // TODO
+      // DONE
       // add event handler for when the carousel has slid
-      // which updates the model's browseActiveIndex and re-renders
-      
+      $("#browse-carousel").bind("slid.bs.carousel", function() {
+          console.log("slid")
+          var newIndex = $("#browse-carousel").find(".active").index();
+          console.log(newIndex);
+          model.browseActiveIndex = newIndex;
+          render();
+      });
 
       // initial fetch
       searchMovies("", render);
