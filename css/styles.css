@@ -1,15 +1,7 @@
 /*
-TODO
+DONE
 
-Customize your bootstrap.
-
-All images should take up the entire width of their container
-
-<li>s inside the watchlist section should have a width of 160 pixels,
-and should align side-by-side until hitting the edge of the page.
-
-The "I watched it" buttons should fill the entire width of their containers
-
+Give all buttons inside the watchlist
 
 */
 
@@ -23,20 +15,39 @@ The "I watched it" buttons should fill the entire width of their containers
 	color: gray;
 }
 
+/*--------------*/
+
 #section-watchlist li {
 	display: inline-block;
 	width: 160px;
 	margin: 10px;
+	position: relative;
 }
 
 #section-watchlist button {
+	position: absolute;
+	bottom: 0px;
 	width: 100%;
-	margin-top: 10px;
+	background: rgba(0,0,0,0.7);
+	color: white;
+	border-radius: 4px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
 }
+
+#section-watchlist button:hover {
+	background: red;
+	color: white;
+}
+
+.panel {
+	margin: 0px;
+}
+
+/*-----------------------*/
 
 ul {
 	padding: 0;
-	margin-top: 40px;
 }
 
 img {
