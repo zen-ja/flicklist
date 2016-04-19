@@ -5,7 +5,8 @@
 
   <script src="https://code.jquery.com/jquery-2.2.3.js"></script>  
 
-  <!-- TODO add link to bootstrap stylesheet -->
+  <!-- DONE add link to bootstrap stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
   <link rel="stylesheet" href="css/styles.css"/>
 
@@ -14,14 +15,17 @@
 <body>
 
   <!-- 
-  TODO 
+  DONE 
   Use Bootstrap to make this puppy shine!
 
-  Add various bootstrap classes to your elements on this page
-  You will sometimes need to wrap an element inside a container
+  How? Add various Bootstrap classes to your elements on this page,
+  and also into the jQuery DOM nodes you create in flicklist.js.
+  You will sometimes need to wrap an element inside a container,
+  and give the container
   -->
 
-  <header id="big-header">
+  <!-- added "jumbotron" class to this header -->
+  <header class="jumbotron">
     <h1>FlickList</h1>
     <p>Keep a list of all the movies you've been meaning to watch.</p>
   </header>
@@ -38,18 +42,24 @@
   <section id="section-browse">
     <header>
       <h2>Browse Movies</h2>
-      <hr/>
     </header>
 
     <form id="form-search">
-      <input type="text" name="query"/>
-      <input type="submit" value="Search By Title"/>
+      <!-- wrapped these inputs in a "form-group" div -->
+      <div class="form-group">
+        <!-- added class="form-control" to this input -->
+        <input type="text" name="query" class="form-control"/>
+        <!-- added btn and btn-primary classes to this submit button -->
+        <input type="submit" value="Search By Title" class="btn btn-primary"/>
+      </div>
     </form>
 
-    <ul></ul>
+    <!-- added "list-group" class to this ul -->
+    <ul class="list-group"></ul>
   </section>
 
-  <footer>
+  <!-- added "container" class to this footer -->
+  <footer class="container">
     <p>
       2016 LaunchCode | 
       <a href="#">Fork me on Github</a>
@@ -59,7 +69,6 @@
   <script src="js/flicklist.js"></script>
   <script>
     $(document).ready(function() {
-        
       $("#form-search").submit(function(evt) {
         evt.preventDefault();
         var query = $("#form-search input[name=query]").val();

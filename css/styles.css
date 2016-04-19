@@ -1,15 +1,20 @@
 /*
 TODO
-Style the page as shown in the example.
 
-Make good use of the developer tools:
--- on the example page, open up the inspector and poke around
--- on your own page, use dev tools to add and modify styles directly in the browser
+Customize your bootstrap.
+
+All images should take up the entire width of their container
+
+<li>s inside the watchlist section should have a width of 160 pixels,
+and should align side-by-side until hitting the edge of the page.
+
+The "I watched it" buttons should fill the entire width of their containers
+
 
 */
 
 
-#big-header {
+.jumbotron {
 	background: gray;
 	color: white;
 }
@@ -18,30 +23,39 @@ Make good use of the developer tools:
 	color: gray;
 }
 
-#section-browse {
-  background: black;
-  color: white;
+#section-watchlist li {
+	display: inline-block;
+	width: 160px;
+	margin: 10px;
 }
 
-section, #big-header, #form-search {
-	padding: 20px;
-}
-
-#form-search {
-	margin-top: 40px;
-}
-
-#section-browse li {
-	margin-bottom: 40px;
-	list-style: none;
-	border: 1px solid white;
-	padding: 10px;
-}
-
-li h4 {
-	margin-top: 0px;
+#section-watchlist button {
+	width: 100%;
+	margin-top: 10px;
 }
 
 ul {
+	padding: 0;
 	margin-top: 40px;
+}
+
+img {
+	width: 100%;
+}
+
+#section-browse {
+	background: black;
+}
+
+header {
+	margin-bottom: 40px;
+	color: gray;
+}
+
+section, .jumbotron, .list-group-item {
+	padding: 20px;
+}
+
+.list-group-item {
+	color: gray;
 }
