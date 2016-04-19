@@ -1,28 +1,26 @@
 
 
-var model = {
-  watchlistItems: [],
-  discoverItems: []
+var api = {
+	root: "https://api.themoviedb.org/3",
+	token: "" // TODO put your api key here
 }
-
 
 /**
  * Makes an AJAX request to themoviedb.org, asking for some movies
- * if successful, updates the model.discoverItems appropriately
+ * if successful, prints the results to the console
  */
-function fetchMovies() {
-  // TODO
+function testTheAPI() {
+	$.ajax({
+		url: api.root + "/discover/movie",
+		data: {
+			api_key: api.token,
+		},
+		success: function(response) {
+			console.log("We got a response from The Movie DB!");
+			console.log(response);
+		}
+	});
 }
 
 
-/**
- * re-renders the page with new content, based on the current state of the model
- */
-function render() {
-  // TODO
-}
-
-
-
-
-console.log("if you're seeing this, that means the script loaded!");
+console.log("The script loaded!");
