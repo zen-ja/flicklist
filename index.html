@@ -4,7 +4,6 @@
   <meta charset="utf-8"/>
 
   <script src="https://code.jquery.com/jquery-2.2.3.js"></script>  
-  <link rel="stylesheet" href="css/styles.css"/>
 
   <title>FlickList</title>
 </head>
@@ -12,26 +11,50 @@
 
   <header>
     <h1>FlickList</h1>
+    <p>Keep a list of all the movies you've been meaning to watch.</p>
   </header>
 
-  <section>
-    <p>Open up the console on your developer tools.</p>
-    <p>You should see two statements:</p>
-    <ol>
-      <li>"The script loaded!"</li>
-      <li>
-        <p>"We got a response from the The Movie DB!"</p>
-        <p>[an object representing the response]</p>
-      </li>
-    </ol>
+  <section id="section-watchlist">
+    <header>
+      <h2>My Watchlist</h2>
+      <hr/>
+    </header>
+
+    <ul></ul>
   </section>
 
+  <!-- 
+  DONE
+  Add another section for browsing movies
+  -->
+  <section id="section-browse">
+    <header>
+      <h2>Browse Movies</h2>
+      <hr/>
 
+      <ul></ul>
+    </header>
 
-  <!-- TODO include our flicklist.js script -->
+    <ul></ul>
+  </section>
 
+  <!-- 
+  DONE add a footer to the bottom of the page 
+  -->
+  <footer>
+    <p>
+      2016 LaunchCode | 
+      <a href="#">Fork me on Github</a>
+    </p>
+  </footer>
+
+  <script src="js/flicklist.js"></script>
   <script>
-    testTheAPI();
+    // When the document is ready, we call the discoverMovies function,
+    // and pass the render functio as its callback
+    $(document).ready(function() {
+      discoverMovies(render);
+    })
   </script>
 
 </body> 
