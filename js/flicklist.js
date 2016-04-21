@@ -24,3 +24,4 @@ function testTheAPI() {
 
 
 console.log("The script loaded!");
+testTheAPI();
