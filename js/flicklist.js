@@ -27,7 +27,7 @@ function discoverMovies(callback) {
 			console.log("We got a response from The Movie DB!");
 			console.log(response);
 			
-			// TODO 1
+			// TODO 2
 			// update the model, setting its .browseItems property equal to the movies we recieved in the response
 			
 			// invoke the callback function that was passed in. 
@@ -42,18 +42,18 @@ function discoverMovies(callback) {
  * re-renders the page with new content, based on the current state of the model
  */
 function render() {
-  // TODO 4
+  // TODO 5
   // clear everything from both lists
   
-  // TODO 3
+  // TODO 4
   // for each movie on the user's watchlist, insert a list item into the <ul> in the watchlist section
   
   // for each movie on the current browse list, 
   model.browseItems.forEach(function(movie) {
-  	// TODO 2
+  	// TODO 3
   	// insert a list item into the <ul> in the browse section
 	  
-	  // TODO 5
+	  // TODO 6
 	  // the list item should include a button, that, when clicked, adds the movie to the watchlist and re-renders
   });
   
