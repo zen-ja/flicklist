@@ -18,7 +18,7 @@ var api = {
  * the callback function that was passed in
  */
 function discoverMovies(callback) {
-  $.ajax({
+	$.ajax({
 		url: api.root + "/discover/movie",
 		data: {
 			api_key: api.token,
@@ -27,11 +27,11 @@ function discoverMovies(callback) {
 			console.log("We got a response from The Movie DB!");
 			console.log(response);
 			
-			// TODO
+			// TODO 1
 			// update the model, setting its .browseItems property equal to the movies we recieved in the response
 			
-			// TODO
-			// invoke the callback function that was passed in
+			// invoke the callback function that was passed in. 
+			callback();
 		}
 	});
   
@@ -42,15 +42,21 @@ function discoverMovies(callback) {
  * re-renders the page with new content, based on the current state of the model
  */
 function render() {
-  // TODO
+  // TODO 4
   // clear everything from both lists
   
-  // TODO
-  // for each movie on the user's watchlist, add an item to the <ul> in the watchlist section
+  // TODO 3
+  // for each movie on the user's watchlist, insert a list item into the <ul> in the watchlist section
   
-  // TODO 
-  // for each movie on the current browse list, add an item to the <ul> in the browse section
-  // the item should include a button, that, when clicked, adds the movie to the watchlist and re-renders
+  // for each movie on the current browse list, 
+  model.browseItems.forEach(function(movie) {
+  	// TODO 2
+  	// insert a list item into the <ul> in the browse section
+	  
+	  // TODO 5
+	  // the list item should include a button, that, when clicked, adds the movie to the watchlist and re-renders
+  });
+  
 }
 
 
