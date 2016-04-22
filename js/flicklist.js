@@ -43,7 +43,14 @@ function discoverMovies(callback) {
  */
 function render() {
   // TODO
-  //
+  // clear everything from both lists
+  
+  // TODO
+  // for each movie on the user's watchlist, add an item to the <ul> in the watchlist section
+  
+  // TODO 
+  // for each movie on the current browse list, add an item to the <ul> in the browse section
+  // the item should include a button, that, when clicked, adds the movie to the watchlist and re-renders
 }
 
 
