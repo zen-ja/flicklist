@@ -18,8 +18,6 @@ var api = {
  * the callback function that was passed in
  */
 function discoverMovies(callback) {
-  // DONE
-  
   $.ajax({
     url: api.root + "/discover/movie",
     data: {
@@ -27,11 +25,14 @@ function discoverMovies(callback) {
     },
     success: function(response) {
       console.log(response);
+      
+      // DONE
+			// update the model, setting its .browseItems property equal to the movies we recieved in the response
       model.browseItems = response.results;
-      callback(response);
-    },
-    fail: function() {
-      console.log("fail!");
+      
+      // DONE
+			// invoke the callback function that was passed in
+      callback();
     }
   });
 }
@@ -43,18 +44,15 @@ function discoverMovies(callback) {
 function render() {
   // DONE
 
-  var watchlistElement = $("#section-watchlist ul");
-  var browseElement = $("#section-browse ul");
-
   // clear everything
-  watchlistElement.empty();
-  browseElement.empty();
+  $("#section-watchlist ul").empty();
+  $("#section-browse ul").empty();
 
   // insert watchlist items
   model.watchlistItems.forEach(function(movie) {
     var title = $("<p></p>").text(movie.original_title);
     var itemView = $("<li></li>").append(title);
-    watchlistElement.append(itemView);
+    $("#section-watchlist ul").append(itemView);
   });
 
   // insert browse items
@@ -66,9 +64,8 @@ function render() {
         model.watchlistItems.push(movie);
         render();
       });
-
     var itemView = $("<li></li>").append(title).append(button);
-    browseElement.append(itemView);
+    $("#section-browse ul").append(itemView);
   });
   
 }
