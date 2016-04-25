@@ -53,11 +53,11 @@ function render() {
   	// TODO 3
   	// insert a list item into the <ul> in the browse section
 	  
-	  // TODO 4
-	  // the list item should include a button that says "Add to Watchlist"
-	  
-	  	// TODO 5
-	  	// when the button is clicked, this movie should be added to the model's watchlist and render() should be called again
+	// TODO 4
+	// the list item should include a button that says "Add to Watchlist"
+	
+	// TODO 5
+	// when the button is clicked, this movie should be added to the model's watchlist and render() should be called again
   });
   
 }
