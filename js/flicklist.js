@@ -42,10 +42,10 @@ function discoverMovies(callback) {
  * re-renders the page with new content, based on the current state of the model
  */
 function render() {
-  // TODO 5
+  // TODO 7
   // clear everything from both lists
   
-  // TODO 4
+  // TODO 6
   // for each movie on the user's watchlist, insert a list item into the <ul> in the watchlist section
   
   // for each movie on the current browse list, 
@@ -53,8 +53,11 @@ function render() {
   	// TODO 3
   	// insert a list item into the <ul> in the browse section
 	  
-	  // TODO 6
-	  // the list item should include a button, that, when clicked, adds the movie to the watchlist and re-renders
+	  // TODO 4
+	  // the list item should include a button that says "Add to Watchlist"
+	  
+	  	// TODO 5
+	  	// when the button is clicked, this movie should be added to the model's watchlist and render() should be called again
   });
   
 }
