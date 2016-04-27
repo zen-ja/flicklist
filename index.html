@@ -27,30 +27,26 @@
   <section id="section-browse">
     <header>
       <h2>Browse Movies</h2>
-      <hr/>
+
+      <!-- 
+      TODO 6 (DONE)
+      add a <form> here for users to search for movies by title 
+      -->
+      <form id="form-search">
+        <input type="text" name="query"/>
+        <input type="submit" value="Search By Title"/>
+      </form>
     </header>
 
-    <!-- DONE add a <form> here for users to search for movies by title -->
-    <form id="form-search">
-      <input type="text" name="query"/>
-      <br/>
-      <input type="submit" value="Search By Title"/>
-    </form>
+    
 
     <ul></ul>
   </section>
 
-  <footer>
-    <p>
-      2016 LaunchCode | 
-      <a href="#">Fork me on Github</a>
-    </p>
-  </footer>
-
   <script src="js/flicklist.js"></script>
   <script>
     $(document).ready(function() {
-      // DONE
+      // TODO 7 (DONE)
       // add a submit handler for the form above
       // should cause a fetch and re-render
       $("#form-search").submit(function(evt) {
