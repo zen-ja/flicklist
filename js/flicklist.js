@@ -8,7 +8,7 @@ var model = {
 
 var api = {
   root: "https://api.themoviedb.org/3",
-  token: "8e888fa39ec243e662e1fb738c42ae99"
+  token: "8e888fa39ec243e662e1fb738c42ae99" // TODO 0 add your api key
 }
 
 
@@ -24,12 +24,8 @@ function discoverMovies(callback) {
       api_key: api.token
     },
     success: function(response) {
-      console.log(response);
       model.browseItems = response.results;
       callback(response);
-    },
-    fail: function() {
-      console.log("fail!");
     }
   });
 }
@@ -43,8 +39,8 @@ function discoverMovies(callback) {
  * the callback function that was passed in
  */
 function searchMovies(query, callback) {
-  // TODO 
-  
+  // TODO 8
+
 }
 
 
@@ -52,18 +48,20 @@ function searchMovies(query, callback) {
  * re-renders the page with new content, based on the current state of the model
  */
 function render() {
-  var watchlistElement = $("#section-watchlist ul");
-  var browseElement = $("#section-browse ul");
 
   // clear everything
-  watchlistElement.empty();
-  browseElement.empty();
+  $("#section-watchlist ul").empty();
+  $("#section-browse ul").empty();
 
   // insert watchlist items
   model.watchlistItems.forEach(function(movie) {
     var title = $("<p></p>").text(movie.original_title);
-    var itemView = $("<li></li>").append(title);
-    watchlistElement.append(itemView);
+    var itemView = $("<li></li>")
+      .append(title)
+      // TODO 3
+      // give itemView a class attribute of "item-watchlist"
+
+    $("#section-watchlist ul").append(itemView);
   });
 
   // insert browse items
@@ -74,22 +72,27 @@ function render() {
       .click(function() {
         model.watchlistItems.push(movie);
         render();
-      })
-      // TODO
+      });
+      // TODO 2
       // the button should be disabled if this movie is already in
       // the user's watchlist
       // see jQuery .prop() and Array.indexOf()
 
 
-    // TODO
+    // TODO 1
     // create a paragraph containing the movie object's .overview value
-    // then append the paragraph in between the title and the button
+    // then in the code block below,
+    // append the paragraph in between the title and the button
 
+
+    // append everything to itemView, along with an <hr/>
     var itemView = $("<li></li>")
+      .append($("<hr/>"))
       .append(title)
       .append(button);
 
-    browseElement.append(itemView);
+    // append the itemView to the list
+    $("#section-browse ul").append(itemView);
   });
   
 }

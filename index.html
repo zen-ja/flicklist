@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <header>
+  <header id="big-header">
     <h1>FlickList</h1>
     <p>Keep a list of all the movies you've been meaning to watch.</p>
   </header>
@@ -27,32 +27,31 @@
   <section id="section-browse">
     <header>
       <h2>Browse Movies</h2>
-      <hr/>
+
+      <!-- 
+      TODO 6
+      add a <form> here for users to search for movies by title 
+      -->
+
     </header>
 
-    <!-- TODO add a <form> here for users to search for movies by title -->
+    
 
     <ul></ul>
   </section>
 
-  <footer>
-    <p>
-      2016 LaunchCode | 
-      <a href="#">Fork me on Github</a>
-    </p>
-  </footer>
-
   <script src="js/flicklist.js"></script>
   <script>
     $(document).ready(function() {
-      // TODO
+
+      // TODO 7
       // add a submit handler for the form above
-      // should cause a fetch and re-render
+      // should invoke the searchMovies function with render as callback
       
 
       // even though we are adding the search form, we still want to fetch
       // immediately here on doc ready so that the user sees some content initially
-      fetchMovies(render);
+      discoverMovies(render);
     });
   </script>
 
