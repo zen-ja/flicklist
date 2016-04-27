@@ -5,6 +5,9 @@ var model = {
   browseItems: []
 }
 
+var firstMovieTitle = model.watchlistItems[0].original_title.val();
+console.log(firstMovieTitle); 
+
 
 var api = {
   root: "https://api.themoviedb.org/3",
