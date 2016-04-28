@@ -1,5 +1,11 @@
 
 
+$(document).ready(function() {
+  discoverMovies(render);
+});
+
+
+
 var model = {
   watchlistItems: [],
   browseItems: []
@@ -39,7 +45,7 @@ function discoverMovies(callback) {
  * the callback function that was passed in
  */
 function searchMovies(query, callback) {
-  // TODO 9
+  // TODO 8
 
 }
 
