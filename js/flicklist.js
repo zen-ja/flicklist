@@ -39,7 +39,7 @@ function discoverMovies(callback) {
  * the callback function that was passed in
  */
 function searchMovies(query, callback) {
-  // TODO 8
+  // TODO 9
 
 }
 
@@ -81,7 +81,7 @@ function render() {
 
     // TODO 1
     // create a paragraph containing the movie object's .overview value
-    // then in the code block below,
+    // then, in the code block below,
     // append the paragraph in between the title and the button
 
 
