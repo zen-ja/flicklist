@@ -48,7 +48,7 @@ function discoverMovies(callback) {
 function searchMovies(searchTerm, callback) {
   console.log("searching for movies with '" + searchTerm + "' in their title...");
 
-  // TODO 8
+  // TODO 9
   // implement this function as described in the comment above
   // you can use the body of discoverMovies as a jumping off point
 
