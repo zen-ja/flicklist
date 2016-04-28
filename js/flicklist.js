@@ -19,7 +19,8 @@ var api = {
 
 
 /**
- * Makes an AJAX request to themoviedb.org, asking for some movies
+ * Makes an AJAX request to /discover/movie endpoint of the API
+ *
  * if successful, updates the model.browseItems appropriately, and then invokes
  * the callback function that was passed in
  */
@@ -31,21 +32,26 @@ function discoverMovies(callback) {
     },
     success: function(response) {
       model.browseItems = response.results;
-      callback(response);
+      callback();
     }
   });
 }
 
 
 /**
- * Makes an AJAX request to the /search endpoint of the API, using the 
+ * Makes an AJAX request to the /search/movie endpoint of the API, using the 
  * query string that was passed in
  *
  * if successful, updates model.browseItems appropriately and then invokes
  * the callback function that was passed in
  */
-function searchMovies(query, callback) {
+function searchMovies(searchTerm, callback) {
+  console.log("searching for movies with '" + searchTerm + "' in their title...");
+
   // TODO 8
+  // implement this function as described in the comment above
+  // you can use the body of discoverMovies as a jumping off point
+
 
 }
 
