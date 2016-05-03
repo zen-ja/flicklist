@@ -1,51 +1,84 @@
+
+
 /*
-DONE
-Style the page as shown in the example.
-
-Make good use of the developer tools:
--- on the example page, open up the inspector and poke around
--- on your own page, use dev tools to add and modify styles directly in the browser
-
+TODO
+Customize the .jumbotron class to have centered text instead of left-aligned
+Also change its bottom margin to 1%
 */
 
 
-/*
-TODO 4 (DONE)
-add a selector for elements with class "item-watchlist"
-give these elements a display property of inline-block
-style them as shown in the example
-*/
-.item-watchlist {
-	display: inline-block;
-	margin: 10px 10px 0px 0px;
-	padding: 60px;
-	background: orange;
-	color: white;
-}
 
 /*
-TODO 5 (DONE)
-Make all elements have color: gray; by default
-Hint: just apply the style using a parent selector, and all 
-descendent elements will inherit the same styles
+TODO
+We no longer want to apply color: gray; to everything in the body.
+We still want it for the main content, but not for the jumbotron header.
+Change this selector to something like .main-content, 
+and then over in index.html, give the appropriate element an attribute of 
+class="main-content"
 */
 body {
 	color: gray;
 }
 
-#big-header {
-	background: gray;
-	color: white;
-	text-align: center;
-}
+
+/*
+TODO
+Give the Watchlist items some styles:
+- a fixed width of 160px
+- a little bit of margin on the bottom and right edges
+- no padding
+*/
+
+
+
+/*
+TODO
+Apply text-align: center; to the watchlist
+*/
+
+
+
+/*
+TODO
+The "I watched it" button should fill the entire width of its container, 
+and should be 10px below the poster img
+*/
+
+
 
 #section-browse {
-	background: #eee;	
+	background: black;	
 }
 
-#section-browse li {
-	margin-bottom: 40px;
-	list-style: none;
+#section-browse form {
+	margin-bottom: 2%;
+}
+
+hr {
+	border-color: rgba(128,128,128,0.2);
+}
+
+section header {
+	margin-bottom: 10px;
+}
+
+section {
+	padding: 2%;
+}
+
+
+/*
+TODO
+Delete everything else below! 
+The Bootstrap classes have made this stuff no longer relevant
+*/
+
+ul {
+	padding-left: 0px;
+}
+
+button:disabled {
+	opacity: 0.5;
 }
 
 button, input[type="submit"] {
@@ -55,18 +88,7 @@ button, input[type="submit"] {
 	color: white;
 }
 
-button:disabled {
-	opacity: 0.5;
-}
-
-section header {
+#section-browse li {
 	margin-bottom: 40px;
-}
-
-section, #big-header {
-	padding: 20px;
-}
-
-ul {
-	padding-left: 0px;
+	list-style: none;
 }
