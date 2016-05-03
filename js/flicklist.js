@@ -8,15 +8,16 @@ var model = {
 
 var api = {
   root: "https://api.themoviedb.org/3",
-  token: "8e888fa39ec243e662e1fb738c42ae99", // TODO 0 (DONE) add your api key
+  token: "TODO", // TODO 0 add your api key
 
   /**
-   * Given a movie object, return the url to its poster image
+   * Given a movie object, returns the url to its poster image
    */
   posterUrl: function(movie) {
-    // TODO
+    // TODO 4b
     // implement this function
-    
+
+    return "http://images5.fanpop.com/image/photos/25100000/movie-poster-rapunzel-and-eugene-25184488-300-450.jpg" 
   }
 }
 
@@ -75,15 +76,19 @@ function render() {
   model.watchlistItems.forEach(function(movie) {
     var title = $("<h6></h6>").text(movie.original_title);
 
-    // TODO 
-    // add an "I watched it" button
+    // TODO 1 
+    // add an "I watched it" button and append it below the title
+    // Clicking should remove this movie from the watchlist and re-render
 
-    // TODO 
-    // add a poster image
+    // TODO 2i
+    // apply the classes "btn btn-danger" to the "I watched it button"
 
-    // TODO 
-    // re-implement the li as a bootstrap panel
+    // TODO 4a
+    // add a poster image and append it inside the 
+    // panel body above the button
 
+    // TODO 2g
+    // re-implement the li as a bootstrap panel with a heading and a body
     var itemView = $("<li></li>")
       .append(title)
       .attr("class", "item-watchlist");
@@ -94,7 +99,7 @@ function render() {
   // insert browse items
   model.browseItems.forEach(function(movie) {
 
-    // TODO
+    // TODO 2d continued
     // style this list item to look like the demo
     // You'll also need to make changes in index.html.
     // use the following BS classes:
