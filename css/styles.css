@@ -1,11 +1,18 @@
 
+
 /*
-TODO (DONE)
-We no longer want to apply color: gray; to everything in the body.
-We still want it for the main content, but not for the jumbotron header.
-Change this selector to something like .main-content, 
-and then over in index.html, give the appropriate element an attribute of 
-class="main-content"
+TODO 2c
+Customize the .jumbotron class to have centered text instead of left-aligned
+Also change its bottom margin to 1%
+*/
+
+
+/*
+TODO 2h
+Give the Watchlist items some styles:
+- a fixed width of 160px
+- a little bit of margin on the bottom and right edges
+- no padding
 */
 .main-content {
 	color: gray;
@@ -13,27 +20,21 @@ class="main-content"
 
 
 /*
-Customize the Bootstrap .jumbotron class to be centered instead of left-aligned
-Also change its bottom margin to 1%
+TODO 2j
+The "I watched it" button should fill the entire width of its container, 
+and should be 10px below the neighbor element above it
 */
-.jumbotron {
-	text-align: center;
-	margin-bottom: 1%;
-}
 
-#section-watchlist li {
-	padding: 0px;
-	width: 160px;
-	margin: 0px 4% 4% 0px;
-}
 
-#section-watchlist ul {
-	text-align: center;
-}
+/*
+TODO 3c
+Apply text-align: center; to the watchlist
+*/
 
-#section-watchlist li button {
-	margin-top: 10px;
-	width: 100%;
+
+
+.main-content {
+	color: gray;
 }
 
 #section-browse {
@@ -41,7 +42,7 @@ Also change its bottom margin to 1%
 }
 
 #section-browse form {
-	margin-bottom: 20px;
+	margin-bottom: 2%;
 }
 
 hr {
@@ -56,3 +57,29 @@ section {
 	padding: 2%;
 }
 
+
+/*
+TODO 5
+Delete everything else below! 
+The Bootstrap classes have made this stuff no longer relevant
+*/
+
+ul {
+	padding-left: 0px;
+}
+
+button:disabled {
+	opacity: 0.5;
+}
+
+button, input[type="submit"] {
+	padding: 10px;
+	background: orange;
+	border-width: 0px;
+	color: white;
+}
+
+#section-browse li {
+	margin-bottom: 40px;
+	list-style: none;
+}
