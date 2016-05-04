@@ -123,9 +123,8 @@ function render() {
     var itemView = $("<li></li>")
       .append(title)
       .append(overview)
-      .append(button)
-      .attr("class", "list-group-item");
-
+      .append(button);
+      
     // append the itemView to the list
     $("#section-browse ul").append(itemView);
   });
