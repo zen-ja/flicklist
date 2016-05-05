@@ -71,13 +71,13 @@ function render() {
   $("#section-watchlist ul").empty();
   $("#section-browse ul").empty();
 
-  // insert watchlist items
+  // render watchlist items
   model.watchlistItems.forEach(function(movie) {
     var itemView = watchlistItemView(movie);
     $("#section-watchlist ul").append(itemView);
   });
 
-  // insert browse items
+  // render browse items
   model.browseItems.forEach(function(movie) {
     var title = $("<h4></h4>").text(movie.original_title);
     var overview = $("<p></p>").text(movie.overview);
@@ -99,8 +99,8 @@ function render() {
     // append the itemView to the list
     $("#section-browse ul").append(itemView);
   });
-  
 }
+
 
 function watchlistItemView(movie) {
   var title = $("<h6></h6>")
