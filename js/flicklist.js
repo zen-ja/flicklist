@@ -25,7 +25,15 @@ var api = {
  * if successful, updates the model.browseItems appropriately, and then invokes
  * the callback function that was passed in
  */
+
+// TODO 1
+// this function should accept a second argument, `keywords`
 function discoverMovies(callback) {
+
+  // TODO 2 
+  // ask the API for movies related to the keywords that were passed in above
+  // HINT: add another key/value pair to the `data` argument below
+
   $.ajax({
     url: api.root + "/discover/movie",
     data: {
@@ -34,7 +42,6 @@ function discoverMovies(callback) {
     success: function(response) {
       model.browseItems = response.results;
       callback(response);
-      console.log(response);
     }
   });
 }
@@ -48,15 +55,49 @@ function discoverMovies(callback) {
  * the callback function that was passed in
  */
 function searchMovies(query, callback) {
+  // TODO 3
+  // change the url so that we search for keywords, not movies
+
+
+  // TODO 4
+  // when the response comes back, do all the tasks below:
+
+
+  // TODO 4a
+  // create a new variable called keywordIDs whose value is an array of all the
+  // `.id` values of each of the objects inside reponse.results
+  // HINT use the array map function to map over response.results
+
+
+  // TODO 4b
+  // create a new variable called keywordsString by converting 
+  // the array of ids to a comma-separated string, e.g.
+  //      "192305,210090,210092,210093"
+  // HINT: use the Array join function
+
+
+  // TODO 4c
+  // instead of a comma-separated string, we want the ids
+  // to be spearated with the pipe "|" character, eg:
+  //     "192305|210090|210092|210093"
+  // HINT: pass an argument to the join function
+
+
+  // TODO 4d
+  // when the response comes back, call discoverMovies, 
+  // passing along 2 arguments:
+  // 1) the callback 
+  // 2) the string of keywords
+
+
   $.ajax({
-    url: api.root + "/search/keywords",
+    url: api.root + "/search/movie",
     data: {
       api_key: api.token,
       query: query
     },
     success: function(response) {
-      model.browseItems = response.results;
-      callback(response);
+      console.log(response);
     }
   });
 }
@@ -73,7 +114,38 @@ function render() {
 
   // render watchlist items
   model.watchlistItems.forEach(function(movie) {
-    var itemView = watchlistItemView(movie);
+    var title = $("<h6></h6>").text(movie.original_title);
+      
+    // movie poster
+    var poster = $("<img></img>")
+      .attr("src", api.posterUrl(movie))
+      .attr("class", "img-responsive");
+
+    // "I watched it" button
+    var button = $("<button></button>")
+      .text("I watched it")
+      .attr("class", "btn btn-danger")
+      .click(function() {
+        var index = model.watchlistItems.indexOf(movie);
+        model.watchlistItems.splice(index, 1);
+        render();
+      });
+
+    // panel heading contains the title
+    var panelHeading = $("<div></div>")
+      .attr("class", "panel-heading")
+      .append(title);
+    
+    // panel body contains the poster and button
+    var panelBody = $("<div></div>")
+      .attr("class", "panel-body")
+      .append( [poster, body] );
+
+    // list item is a panel, contains the panel heading and body
+    var itemView = $("<li></li>")
+      .append( [panelHeading, panelBody] )
+      .attr("class", "panel panel-default");
+
     $("#section-watchlist ul").append(itemView);
   });
 
@@ -82,6 +154,7 @@ function render() {
     var title = $("<h4></h4>").text(movie.original_title);
     var overview = $("<p></p>").text(movie.overview);
 
+    // button for adding to watchlist
     var button = $("<button></button>")
       .text("Add to Watchlist")
       .click(function() {
@@ -93,49 +166,11 @@ function render() {
 
     var itemView = $("<li></li>")
       .attr("class", "list-group-item")
-      .append(title)
-      .append(overview)
-      .append(button);
+      .append( [title, overview, button] );
       
     // append the itemView to the list
     $("#section-browse ul").append(itemView);
   });
-}
-
-
-function watchlistItemView(movie) {
-  var title = $("<h6></h6>")
-    .text(movie.original_title);
-    
-  // movie poster
-  var poster = $("<img></img>")
-    .attr("src", api.posterUrl(movie))
-    .attr("class", "img-responsive");
-
-  // "I watched it" button
-  var button = $("<button></button>")
-    .text("I watched it")
-    .attr("class", "btn btn-danger")
-    .click(function() {
-      var index = model.watchlistItems.indexOf(movie);
-      model.watchlistItems.splice(index, 1);
-      render();
-    });
-
-  // panel heading contains the title
-  var panelHeading = $("<div></div>")
-    .attr("class", "panel-heading")
-    .append(title);
-  
-  // panel body contains the poster and button
-  var panelBody = $("<div></div>")
-    .attr("class", "panel-body")
-    .append( [poster, body] );
-
-  // list item is a panel, contains the panel heading and body
-  return $("<li></li>")
-    .append( [panelHeading, panelBody] )
-    .attr("class", "panel panel-default");
 }
 
 
