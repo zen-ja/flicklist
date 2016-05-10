@@ -139,7 +139,7 @@ function render() {
     // panel body contains the poster and button
     var panelBody = $("<div></div>")
       .attr("class", "panel-body")
-      .append( [poster, body] );
+      .append( [poster, button] );
 
     // list item is a panel, contains the panel heading and body
     var itemView = $("<li></li>")
