@@ -92,6 +92,7 @@ function render() {
       .attr("class", "btn btn-primary");
 
     var itemView = $("<li></li>")
+      .attr("class", "list-group-item")
       .append(title)
       .append(overview)
       .append(button);
