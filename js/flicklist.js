@@ -2,7 +2,8 @@
 
 var model = {
   watchlistItems: [],
-  browseItems: []
+  browseItems: [],
+  activeMovieIndex: 2
 }
 
 
@@ -59,16 +60,19 @@ function searchMovies(query, callback) {
       query: query
     },
     success: function(response) {
-      console.log(response);
-    
-      
-      var keywordIDs = response.results.map(getID);
-      var keywordsString = keywordIDs.join("|");
-      console.log(keywordsString);
-      
+      var keywordIDs = response.results.map(function(keywordObj) {
+        return keywordObj.id;
+      });
+      var keywordsString = keywordIDs.join("|");      
       discoverMovies(callback, keywordsString);
     }
   });
+}
+
+function addActiveMovieToWatchlist() {
+  var activeMovie = model.browseItems[model.activeMovieIndex];
+  model.watchlistItems.push(activeMovie);
+  render();
 }
 
 
@@ -118,29 +122,30 @@ function render() {
     $("#section-watchlist ul").append(itemView);
   });
 
-  // render browse items
-  model.browseItems.forEach(function(movie) {
-    var title = $("<h4></h4>").text(movie.original_title);
-    var overview = $("<p></p>").text(movie.overview);
+  // fill carousel with posters
+  var posters = model.browseItems.map(function(movie) {
+    var poster = $("<img></img>")
+      .attr("src", api.posterUrl(movie))
+      .attr("class", "img-responsive");
 
-    // button for adding to watchlist
-    var button = $("<button></button>")
-      .text("Add to Watchlist")
-      .attr("class", "btn btn-primary")
-      .click(function() {
-        model.watchlistItems.push(movie);
-        render();
-      })
-      .prop("disabled", model.watchlistItems.indexOf(movie) !== -1)
-      .attr("class", "btn btn-primary");
-
-    var itemView = $("<li></li>")
-      .attr("class", "list-group-item")
-      .append( [title, overview, button] );
-      
-    // append the itemView to the list
-    $("#section-browse ul").append(itemView);
+    return $("<li></li>")
+      .attr("class", "item")
+      .append(poster);     
   });
+  $("#section-browse ul").append(posters);
+
+  // display info about active movie
+
+  var activeMovie = model.browseItems[model.activeMovieIndex];
+  if (activeMovie) {
+    $("#browse-info h4").text(activeMovie.original_title);
+    $("#browse-info p").text(activeMovie.overview);
+
+    posters[model.activeMovieIndex].addClass("item active");
+
+    $("#add-to-watchlist")
+      .prop("disabled", model.watchlistItems.indexOf(activeMovie) !== -1);
+  }
 }
 
 

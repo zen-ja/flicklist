@@ -5,39 +5,38 @@
 	margin-bottom: 1%;
 }
 
-
 #section-watchlist li {
 	padding: 0px;
 	margin: 0px 4% 4% 0px;
 	width: 160px;
 }
 
+#browse-carousel {
+	max-width: 300px;
+	margin: auto;
+}
 
-#section-watchlist ul li button {
+#section-watchlist li button {
 	width: 100%;
 	margin-top: 10px;
 }
 
-
-#section-watchlist ul {
-	text-align: center;
-}	
-
+#section-browse ul {
+	padding-left: 0px;
+}
 
 .main-content {
 	color: gray;
 }
 
+.well {
+	background: red;
+	color: white;
+	border-width: 0px;
+}
+
 #section-browse {
 	background: black;	
-}
-
-#section-browse form {
-	margin-bottom: 2%;
-}
-
-hr {
-	border-color: rgba(128,128,128,0.2);
 }
 
 section header {
@@ -48,11 +47,6 @@ section {
 	padding: 2%;
 }
 
-
-/*
-TODO 5 (DONE)
-Delete everything else below! 
-The Bootstrap classes have made this stuff no longer relevant
-*/
-
-
+#add-to-watchlist {
+	width: 100%
+}
