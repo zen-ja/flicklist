@@ -2,83 +2,66 @@
 <html>
 <head>
   <meta charset="utf-8"/>
+  <meta name=viewport content="width=device-width, initial-scale=1">
 
   <script src="https://code.jquery.com/jquery-2.2.3.js"></script>  
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
   <link rel="stylesheet" href="css/styles.css"/>
 
   <title>FlickList</title>
 </head>
 <body>
 
+
   <header class="jumbotron">
     <h1>FlickList</h1>
-    <p>Keep a list of all the movies you've been meaning to watch.</p>
+    <p class="text-muted">Keep a list of all the movies you've been meaning to watch.</p>
   </header>
 
-  <section id="section-watchlist">
-    <header>
-      <h2>My Watchlist</h2>
-      <hr/>
-    </header>
 
-    <ul></ul>
-  </section>
-
-  <section id="section-browse">
-    <header>
-      <h2>Browse Movies</h2>
-    </header>
-
-    <!-- 
-      DONE 
-      Use Bootstrap's grid system to place the form next to the browse list
-    -->
+  <div class="container-fluid main-content">
     <div class="row">
 
-      <div class="col-sm-4">
-        <form id="form-search">
-          <div class="form-group">
-            <input type="text" name="query" class="form-control"/>
-          </div>
-          <div class="form-group">
-            <input type="submit" value="Search By Keyword" class="btn btn-primary"/>
-          </div>
-        </form>
-      </div>
+      <section id="section-watchlist" class="col-md-5">
+        <header>
+          <h2>My Watchlist</h2>
+          <hr/>
+        </header>
 
-      <div class="col-sm-8"/>
+        <ul class="list-inline"></ul>
+      </section>
+  
+      <section id="section-browse" class="col-md-7">
+        <header>
+          <h2>Browse Movies</h2>
+
+          <!--
+          TODO 5 (DONE)
+          change the submit button so that it says "Search by Topic"
+          -->
+          <form id="form-search">
+            <div class="input-group">
+              <input type="text" class="form-control" name="query"/>
+              <span class="input-group-btn">
+                <input type="submit" class="btn btn-primary" value="Search By Topic"/>
+              </span>
+            </div>
+          </form>
+        </header>
+
         <ul class="list-group"></ul>
-      </div>
-
+      </section>
+      
     </div>
-  </section>
-
-  <footer class="container">
-    <p>
-      2016 LaunchCode | 
-      <a href="#">Fork me on Github</a>
-    </p>
-  </footer>
+  </div>
 
   <script src="js/flicklist.js"></script>
   <script>
-    $(document).ready(function() {
-      $("#form-search").submit(function(evt) {
-        evt.preventDefault();
-        var query = $("#form-search input[name=query]").val();
-        // DONE
-        // discoverMovies now takes an additional argument before the callback
-        // pass in the query string before render
-        searchMovies(query, render);
-      });
-
-      // DONE
-      // discoverMovies now takes an additional argument before the callback
-      // pass in an empty string (initially we don't have any keyword to search for)
-      searchMovies("", render);
+    $("#form-search").submit(function(evt) {
+      evt.preventDefault();
+      var query = $("#form-search input[name=query]").val();
+      searchMovies(query, render);
     });
   </script>
 
