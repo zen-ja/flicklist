@@ -3,7 +3,7 @@
 var model = {
   watchlistItems: [],
   browseItems: [],
-  activeMovieIndex: 2
+  activeMovieIndex: 0
 }
 
 
