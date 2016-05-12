@@ -69,12 +69,6 @@ function searchMovies(query, callback) {
   });
 }
 
-function addActiveMovieToWatchlist() {
-  var activeMovie = model.browseItems[model.activeMovieIndex];
-  model.watchlistItems.push(activeMovie);
-  render();
-}
-
 
 /**
  * re-renders the page with new content, based on the current state of the model
@@ -148,6 +142,12 @@ function render() {
   }
 }
 
+
+function addActiveMovieToWatchlist() {
+  var activeMovie = model.browseItems[model.activeMovieIndex];
+  model.watchlistItems.push(activeMovie);
+  render();
+}
 
 // When the HTML document is ready, we call the discoverMovies function,
 // and pass the render function as its callback
