@@ -6,6 +6,10 @@
 
   <script src="https://code.jquery.com/jquery-2.2.3.js"></script>  
 
+  <!--
+  TODO add bootstrap js script
+  -->
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="css/styles.css"/>
 
@@ -20,36 +24,44 @@
   </header>
 
 
-  <div class="container-fluid main-content">
-    <div class="row">
+  <div class="main-content">
 
-      <section id="section-watchlist" class="col-md-5">
-        <header>
-          <h2>My Watchlist</h2>
-          <hr/>
-        </header>
+    <section id="section-watchlist" class="col-md-5">
+      <header>
+        <h2>My Watchlist</h2>
+        <hr/>
+      </header>
 
-        <ul class="list-inline"></ul>
-      </section>
-  
-      <section id="section-browse" class="col-md-7">
-        <header>
-          <h2>Browse Movies</h2>
+      <ul class="list-inline"></ul>
+    </section>
 
-          <form id="form-search">
-            <div class="input-group">
-              <input type="text" class="form-control" name="query"/>
-              <span class="input-group-btn">
-                <input type="submit" class="btn btn-primary" value="Search By Topic"/>
-              </span>
-            </div>
-          </form>
-        </header>
+    <section id="section-browse" class="col-md-7">
 
-        <ul class="list-group"></ul>
-      </section>
-      
-    </div>
+      <!-- TODO
+      Rearrange the layout of this section using the Bootstrap grid system to match the specification 
+      -->
+
+      <header>
+        <h2>Browse Movies</h2>
+      </header>
+      <form id="form-search">
+        <div class="input-group">
+          <input type="text" class="form-control" name="query"/>
+          <span class="input-group-btn">
+            <input type="submit" class="btn btn-primary" value="Search By Topic"/>
+          </span>
+        </div>
+      </form>
+
+      <!-- 
+      TODO
+      implement a carousel inside this section
+      You can incorporate this <ul> as the .carousel-inner 
+      -->
+      <ul class="list-group"></ul>
+
+    </section>
+
   </div>
 
   <script src="js/flicklist.js"></script>
@@ -58,6 +70,13 @@
       evt.preventDefault();
       var query = $("#form-search input[name=query]").val();
       searchMovies(query, render);
+    });
+
+    $("#browse-carousel").on("slid.bs.carousel", function() {
+      console.log("the carousel just slid!");
+      var newIndex = $("#browse-carousel").find(".active").index();
+      // TODO 
+      // update the model and then re-render
     });
   </script>
 

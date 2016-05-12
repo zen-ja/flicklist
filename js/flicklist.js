@@ -3,6 +3,9 @@
 var model = {
   watchlistItems: [],
   browseItems: []
+
+  // TODO 
+  // add a property for the current active movie index
 }
 
 
@@ -60,8 +63,9 @@ function searchMovies(query, callback) {
     success: function(response) {
       console.log(response);
     
-      
-      var keywordIDs = response.results.map(getID);
+      var keywordIDs = response.results.map(function(keywordObj) {
+        return keywordObj.id;
+      });
       var keywordsString = keywordIDs.join("|");
       console.log(keywordsString);
       
@@ -130,8 +134,7 @@ function render() {
         model.watchlistItems.push(movie);
         render();
       })
-      .prop("disabled", model.watchlistItems.indexOf(movie) !== -1)
-      .attr("class", "btn btn-primary");
+      .prop("disabled", model.watchlistItems.indexOf(movie) !== -1);
 
     var itemView = $("<li></li>")
       .attr("class", "list-group-item")
