@@ -141,7 +141,7 @@ function render() {
     $("#browse-info h4").text(activeMovie.original_title);
     $("#browse-info p").text(activeMovie.overview);
 
-    posters[model.activeMovieIndex].addClass("item active");
+    posters[model.activeMovieIndex].addClass("active");
 
     $("#add-to-watchlist")
       .prop("disabled", model.watchlistItems.indexOf(activeMovie) !== -1);
