@@ -155,28 +155,3 @@ $(document).ready(function() {
   discoverMovies(render);
 });
 
-
-
-
-// // render browse items
-//   model.browseItems.forEach(function(movie) {
-//     var title = $("<h4></h4>").text(movie.original_title);
-//     var overview = $("<p></p>").text(movie.overview);
-
-//     // button for adding to watchlist
-//     var button = $("<button></button>")
-//       .text("Add to Watchlist")
-//       .attr("class", "btn btn-primary")
-//       .click(function() {
-//         model.watchlistItems.push(movie);
-//         render();
-//       })
-//       .prop("disabled", model.watchlistItems.indexOf(movie) !== -1);
-
-//     var itemView = $("<li></li>")
-//       .attr("class", "list-group-item")
-//       .append( [title, overview, button] );
-      
-//     // append the itemView to the list
-//     $("#section-browse ul").append(itemView);
-//   });
