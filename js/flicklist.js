@@ -127,6 +127,7 @@ function render() {
 
   $("#add-to-watchlist")
     .attr("class", "btn btn-primary")
+    .unbind("click")
     .click(function() {
       model.watchlistItems.push(activeMovie);
       render();
