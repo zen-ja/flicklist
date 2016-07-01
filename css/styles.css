@@ -28,7 +28,7 @@
 #section-watchlist li {
 	padding: 0px;
 	margin: 0px 4% 4% 0px;
-	width: 160px;
+	width: 140px;
 }
 
 
@@ -37,18 +37,12 @@
 	margin-top: 10px;
 }
 
-
-#section-watchlist ul {
-	text-align: center;
-}	
-
-
 .main-content {
 	color: gray;
 }
 
 #section-browse {
-	background: black;	
+	background: black;
 }
 
 #section-browse form {
@@ -62,4 +56,3 @@ section header {
 section {
 	padding: 2%;
 }
-
